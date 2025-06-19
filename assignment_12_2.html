@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task2</title>
+    <link rel="stylesheet" href="assignment_12_2.css"/>
+</head>
+<body>
+    <div class="container">
+        <h1>Your Details</h1>
+        <div class="container-1">
+            <label>name: </label>
+            <input type="text" id="name"/>
+        </div>
+        <div class="container-1">
+            <label>Age: </label>
+            <input type="text" id="age"/>
+        </div>
+        <button id="save">Save</button>
+        <button id="load">load</button>
+        <p id="para" class="para"></p>
+        <script >
+            let saveEl=document.getElementById("save");
+            let loadEl=document.getElementById("load");
+
+            saveEl.onclick=function(){
+                let nameEl=document.getElementById("name");
+                let ageEl=document.getElementById("age");
+                let paraEl=document.getElementById("para");
+                let nameValue=nameEl.value;
+                let ageValue=ageEl.value;
+                if(nameValue===""|| ageValue===""){
+                    paraEl.textContent="Please enter details";
+                }
+                else{
+                    localStorage.setItem("name",nameValue);
+                    localStorage.setItem("age",ageValue);
+                    paraEl.textContent="";
+                    nameEl.value="";
+                    ageEl.value="";
+                }
+            }
+
+            loadEl.onclick=function(){
+                let nameEl=document.getElementById("name");
+                let ageEl=document.getElementById("age");
+                nameEl.value=localStorage.getItem("name");
+                ageEl.value=localStorage.getItem("age");
+            }
+        </script>
+    </div>
+</body>
+</html>

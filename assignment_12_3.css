@@ -1,0 +1,35 @@
+.container{
+    background-color:#abed55;
+    color:white;
+    height:100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.heading{
+    text-align: center;
+    font-weight:700;
+}
+
+.container-1{
+    display: flex;
+    justify-content: center;
+}
+button{
+    border-radius: 15px;
+    padding:10px;
+}
+.input{
+    background-color: transparent;
+    border:none;
+    border-bottom:2px solid white;
+    color:white;
+    font-size: 15px;
+}
+.container-2{
+    font-weight: 600;
+    margin-right:10px;
+}
+.right{
+    margin-top:auto;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head> 
+
+  </head>
+  <link rel="stylesheet" href="assignment_12_3.css">
+  <body>
+    <div class="container">
+        <div>
+            <h1 class="heading">WEATHER REPORT</h1>
+                <div class="container-1">
+                    <div class="container-2">
+                        <p id="degree">20</p>
+                        <p id="place">Bhopal</p>
+                        <p id="time">12:15 Monday</p>
+                        <p id="mist">mist</p>
+                    </div>
+                    <div class="right">
+                        <input type="text" id="input" class="input" value="Allahabad"/>
+                        <button id="button">search button</button>
+                    </div>
+                </div>
+        </div>
+    </div>
+    <script>
+        let degreeEl=document.getElementById("degree");
+        let placeEl=document.getElementById("place");
+        let timeEl=document.getElementById("time");
+        let mistEl=document.getElementById("mist");
+        let inputEl=document.getElementById("input");
+        let buttonEl=document.getElementById("button");
+
+        const apiKey = '64931a74feb2e857ca8aaf818dc410db';
+        buttonEl.onclick=function(){
+            let searchValue=inputEl.value;
+            let requiredUrl=`https://api.openweathermap.org/data/2.5/weather?q=${searchValue}&appid=${apiKey}&units=metric`;
+            fetch(requiredUrl).then((response)=>{
+                return response.json();
+            }).then((jsonData)=>{
+                let req=jsonData;
+                let {name , main, weather}=req;
+                let {temp}=main;
+                let {description}=weather[0];
+                let now=new Date();
+                let week=['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+                timeEl.textContent=`${now.getHours()}:${now.getMinutes()} ${week[now.getDay()]}`;
+                degreeEl.textContent=temp;
+                placeEl.textContent=name;
+                mistEl.textContent=description;
+                inputEl.value="";
+            });
+        }
+    </script>
+  </body>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="dateTime"></p>
+    <input type="button" value="clickMe" onclick="startTime()"/>
+    <input type="button" value="Stop" onclick="stopTime()"/>
+</body>
+<script>
+    let dateTimeEl=document.getElementById("dateTime");
+    let counter=null;
+    function startTime(){
+        counter=setInterval(()=>{
+            let now=new Date();
+            dateTimeEl.textContent=now;
+        },1000);
+    }
+    function stopTime(){
+        clearInterval(counter);
+    }
+</script>
+</html>
